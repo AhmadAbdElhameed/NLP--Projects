@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,request,jsonify
 import distilbert_model as model
 
 
@@ -17,8 +17,8 @@ def get_sentiment():
 
 	sent = model.get_prediction(text)
 
-	return sent
+	return jsonify(result = sent)
 
 
 if __name__ == "__main__":
-	app.run(host = "0.0.0.0",port = 5000,debug = True)
+	app.run(host = "0.0.0.0",port = 5000,debug = True,use_reloader = False)
